@@ -2,7 +2,8 @@ import { Badge, Box, Image,  } from "@chakra-ui/react";
 import Vication from "../../models/vicationModel";
 import "./Card.css";
 import { Icon } from '@iconify/react';
-import axios from "axios";
+import PopDeleteBtn from "./popDeleteBtn";
+import EditModal from "./EditModal";
 
 
 
@@ -22,18 +23,18 @@ function Cards2(props:Vication): JSX.Element {
   }
   console.log(props);
 
-  const token = localStorage.getItem('token');
+  // const token = localStorage.getItem('token');
 
-  const deleteCard = (id:number) => {
-    const url = `http://localhost:3001/vication/${id}`;
-    axios.delete(url,{
-        headers: {authorization: `Bearer ${token}`,
-        }
-    })
-   .then((response) => {console.log(response.data);
+  // const deleteCard = (id:number) => {
+  //   const url = `http://localhost:3001/vication/${id}`;
+  //   axios.delete(url,{
+  //       headers: {authorization: `Bearer ${token}`,
+  //       }
+  //   })
+  //  .then((response) => {console.log(response.data);
 
-   }).catch((error) => {console.log("error", error);});
-  }
+  //  }).catch((error) => {console.log("error", error);});
+  // }
 
   const like = () => {
     
@@ -44,7 +45,7 @@ function Cards2(props:Vication): JSX.Element {
     return (
         <div className='card-container'>
           <Box  boxShadow='dark-lg' maxW='sm' borderWidth='1px' borderRadius='lg' overflow='hidden'>
-      <Image   src={property.imageUrl} alt={property.imageAlt} />
+      <Image  src={property.imageUrl} alt={property.imageAlt} />
       <Box p='6'>
         <Box display='flex' alignItems='baseline'>
           <Badge borderRadius='full' px='2' colorScheme='teal'>
@@ -86,10 +87,12 @@ function Cards2(props:Vication): JSX.Element {
           </Box>
           <Box>
           {isUser ? <button onClick={()=>alert(`${props.id} click`)}><Icon className="icon" icon="il:heart" /></button> 
-          : <Box display="grid" gridGap={3} gridAutoFlow="row dense"><button onClick={()=>alert(`${props.id} edit`)}><Icon className="icon"  icon="ri:ball-pen-fill" /></button>   <button onClick={()=>alert(`${props.id} delete`)}><Icon className="icon"  icon="carbon:trash-can" /></button> </Box>
+          : <Box display="grid" gridGap={3} gridAutoFlow="row dense"><button><EditModal id={props.id} description={props.description} destenation={props.destenation} start_date={props.start_date} end_date={props.end_date} price={props.price} image={props.image} followers={props.followers}/></button>  <button><PopDeleteBtn followers={props.followers} id={props.id}/></button> </Box>
           }
           </Box>
+          
         </Box>
+        
 
 
 

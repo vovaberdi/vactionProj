@@ -2,14 +2,13 @@ import { Box, SimpleGrid, Wrap } from "@chakra-ui/react";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import Vication from "../../../models/vicationModel";
-import Cards from "../../Card/Card";
 import Cards2 from "../../Card/Card2";
 import "./ListPlaces.css";
 
 
 function ListPlaces(): JSX.Element {
 
-    const [vication, setVication] = useState<Vication[]>();
+    const [vication, setVication] = useState<Vication[]>([]);
     
 
     const token = localStorage.getItem('token');
