@@ -4,6 +4,7 @@ import { store } from "../../store/store";
 import Vication from "../../models/vicationModel";
 import { login } from "../../store/user-state";
 import { Icon } from '@iconify/react';
+import { render } from "react-dom";
 
 
 
@@ -24,7 +25,7 @@ function PopDeleteBtn(props: Vication): JSX.Element {
       })
      .then((response) => {console.log(response.data);
      }).catch((error) => {console.log("error", error);});
-    //  window.location.reload();
+     
     }
 
 

@@ -25,18 +25,21 @@ function EditModal(props:Vication): JSX.Element {
     const token = localStorage.getItem('token');
     console.log(token);
     const send = async (upDateVication:Vication) =>{
+      
         upDateVication.image = file;
         console.log(upDateVication.image);
         const url = `http://localhost:3001/vication/${props.id}`;
+
         upDateVication.followers=props.followers;
         upDateVication.imageName=props.imageName;
+
         await axios.put(url, upDateVication ,{
             headers: { authorization: `Bearer ${token}`,
             "Content-Type": "multipart/form-data"
             }
         })
-        .then((response)=>{console.log(response)
-        navigat("/ListPlaces")
+        .then((response)=>{
+          onClose()
         })
         .catch(error =>{console.log(error);});
     }
@@ -61,7 +64,7 @@ function EditModal(props:Vication): JSX.Element {
           <ModalBody pb={6}>
           <Container maxW='md'rounded='md'   bgGradient={['linear(to-tr, teal.300, yellow.400)','linear(to-t, blue.200, teal.500)','linear(to-b, orange.100, purple.300)',]} boxShadow='dark-lg' bg='gray.50' color='black'>
             <form onSubmit={handleSubmit(send)} encType="multipart/form-data">
-            <FormControl isRequired>
+            <FormControl >
 
             <FormLabel>description</FormLabel>
             <Input {...register("description")} defaultValue={props.description} placeholder='first_name' />

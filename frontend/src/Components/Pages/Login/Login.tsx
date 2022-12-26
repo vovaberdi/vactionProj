@@ -19,8 +19,8 @@ function Login(): JSX.Element {
 
 
     const send = async (credentials:userCredentials) =>{
-        // localStorage.setItem("user_name", credentials.user_name);
-           store.dispatch(login(credentials));
+        localStorage.setItem("user_name", credentials.user_name);
+          //  store.dispatch(login(credentials));
 
         const url = "http://localhost:3001/user/auth/login";
         await axios.post(url, credentials).then((response)=>{ 
