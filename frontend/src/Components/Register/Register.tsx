@@ -14,7 +14,9 @@ function Register(): JSX.Element {
 
    
     const send = async (newUser:User) =>{
+
         // store.dispatch(login(newUser));
+
         const url = "http://localhost:3001/user/auth/register";
         await axios.post(url, newUser).then((response)=>{
         console.log(response)

@@ -1,3 +1,24 @@
 .ListPlaces{
 
 }
+.pagination a {
+    padding: 10px;
+    border: 1px solid #47a7de;
+    color:#47a7de
+}
+.pagination{
+    display: flex;
+    justify-content: flex-start;
+    list-style: none;
+    cursor: pointer;
+}
+/* .pagination__link--active a {
+    color: #47a7de;
+    background: #47a7de;
+}  
+.pagination__link--disabled a{
+    color: rgb(198,197,202);
+    border: 1px solid rgb(198,197,202);
+}
+.pagination__link{
+    font-weight: bold; } */

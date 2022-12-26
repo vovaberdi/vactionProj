@@ -1,7 +1,7 @@
 import Role from "./Role";
 
 class User{
-  public id:number;
+  public id:number=0;
   public id_:string;
   public f_name:string;
   public l_name:string;

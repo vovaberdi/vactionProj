@@ -1,7 +1,7 @@
-import User from "../models/User";
+import userCredentials from "../models/credentialsModel";
 
 export class UserState {
-  user: User | undefined;
+  user: userCredentials | undefined;
 }
 
 export enum userActionType {
@@ -15,7 +15,7 @@ export interface userAction {
   payload?: any;
 }
 
-export function login(user: User) {
+export function login(user: userCredentials) {
   return {
     type: userActionType.login,
     payload: user,
@@ -41,5 +41,5 @@ export function userReducer(
     case userActionType.logout:
       newUser.user = undefined;
   }
-  return User;
+  return userCredentials;
 }

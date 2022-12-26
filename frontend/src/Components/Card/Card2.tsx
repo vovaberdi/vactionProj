@@ -1,9 +1,11 @@
 import { Badge, Box, Image,  } from "@chakra-ui/react";
 import Vication from "../../models/vicationModel";
-import "./Card.css";
+import "./Card2.css";
 import { Icon } from '@iconify/react';
 import PopDeleteBtn from "./popDeleteBtn";
 import EditModal from "./EditModal";
+import LikeButton from "./likeButton/likeButton";
+
 
 
 
@@ -22,23 +24,6 @@ function Cards2(props:Vication): JSX.Element {
     rating: 4,
   }
   console.log(props);
-
-  // const token = localStorage.getItem('token');
-
-  // const deleteCard = (id:number) => {
-  //   const url = `http://localhost:3001/vication/${id}`;
-  //   axios.delete(url,{
-  //       headers: {authorization: `Bearer ${token}`,
-  //       }
-  //   })
-  //  .then((response) => {console.log(response.data);
-
-  //  }).catch((error) => {console.log("error", error);});
-  // }
-
-  const like = () => {
-    
-  }
 
    const isUser = false;
 
@@ -86,7 +71,7 @@ function Cards2(props:Vication): JSX.Element {
             {property.followers} followers
           </Box>
           <Box>
-          {isUser ? <button onClick={()=>alert(`${props.id} click`)}><Icon className="icon" icon="il:heart" /></button> 
+          {isUser ? <LikeButton  vication_id={props.id}/>
           : <Box display="grid" gridGap={3} gridAutoFlow="row dense"><button><EditModal id={props.id} description={props.description} destenation={props.destenation} start_date={props.start_date} end_date={props.end_date} price={props.price} image={props.image} followers={props.followers}/></button>  <button><PopDeleteBtn followers={props.followers} id={props.id}/></button> </Box>
           }
           </Box>
