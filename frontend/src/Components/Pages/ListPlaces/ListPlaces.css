@@ -4,12 +4,15 @@
 .pagination a {
     padding: 10px;
     border: 1px solid #47a7de;
-    color:#47a7de
+    color:#47a7de;
+    justify-content:center;
+
 }
 .pagination{
+    justify-content:center;
     display: flex;
     justify-content: flex-start;
-    list-style: none;
+    list-style: row;
     cursor: pointer;
 }
 /* .pagination__link--active a {

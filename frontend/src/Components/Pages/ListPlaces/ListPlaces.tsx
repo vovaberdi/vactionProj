@@ -45,7 +45,7 @@ function ListPlaces(): JSX.Element {
     return (
         <div className="ListPlaces">
             <Box alignItems="center" justifyContent="space-between">
-             <ReactPaginate
+             <ReactPaginate 
                 previousLabel={"⬅️Previous"}
                 nextLabel={"Next➡️"}
                 pageCount={pageCount}

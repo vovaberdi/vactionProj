@@ -9,10 +9,18 @@ import { store } from "../../../store/store";
 function LikeButton(props: VicationToLike): JSX.Element {
 
     const [active, setActive] = useState(false);
+    const [currUser, setCurrUser] = useState("");
 
-    useEffect(()=>{
-        // objToLive();
-    },[])
+    
+  const getUser = () => {
+      const loggedInUser:any = localStorage.getItem("user")
+      setCurrUser(loggedInUser);
+  };
+  
+    useEffect(() => {
+      getUser();
+    }, [store.getState().userState.user]);
+  
 
     // const objToLive =() =>{
     //     const user_name = store.getState().userState;
@@ -23,22 +31,20 @@ function LikeButton(props: VicationToLike): JSX.Element {
 
 
 
-
     const handleClick = () => {
-        // active === true ? alert("delete") : likeClick(props);
+        active !== true && likeClick(props)
     setActive(!active);
   };
-
-
  
 
-    const likeClick = (likeBtn:VicationToLike) => {
+    const likeClick = (userLike:VicationToLike) => {
+        console.log(currUser);
+        console.log(userLike.vication_id);
             // store.dispatch(login(id));
-            likeBtn.vication_id=props.vication_id;
-           // likeBtn.user_name= here i need to bring who is the user
-            likeBtn.user_name = JSON.parse(localStorage.getItem("user_name") as string);
-            const url = `http://localhost:3001/vication/addLike`;
-            axios.post(url,likeBtn)
+            userLike.vication_id=props.vication_id;
+            userLike.user_name = currUser;
+            const url = 'http://localhost:3001/vication/addLike';
+            axios.post(url,userLike)
             .then((response) => {console.log(response.data);
            }).catch((error) => {console.log("error", error);});
     }

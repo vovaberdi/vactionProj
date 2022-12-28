@@ -19,15 +19,15 @@ function Login(): JSX.Element {
 
 
     const send = async (credentials:userCredentials) =>{
-        localStorage.setItem("user_name", credentials.user_name);
-          //  store.dispatch(login(credentials));
+        // localStorage.setItem("user_name", credentials.user_name);
 
         const url = "http://localhost:3001/user/auth/login";
         await axios.post(url, credentials).then((response)=>{ 
-          console.log(response);
-          localStorage.setItem("token", response.data);
+          const token:any = response.headers.authorization;
+          localStorage.setItem("token", token);
+          localStorage.setItem("user", response.data);
+          store.dispatch(login(response.data));
           navigat("/ListPlaces")
-            // console.log(store.getState());
         })
         .catch(error =>{console.log(error);});
         navigat("/");

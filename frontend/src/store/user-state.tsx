@@ -41,5 +41,5 @@ export function userReducer(
     case userActionType.logout:
       newUser.user = undefined;
   }
-  return userCredentials;
+  return newUser;
 }

@@ -4,6 +4,8 @@ import "./Card2.css";
 import PopDeleteBtn from "./popDeleteBtn";
 import EditModal from "./EditModal";
 import LikeButton from "./likeButton/likeButton";
+import { useEffect, useState } from "react";
+import { store } from "../../store/store";
 
 
 
@@ -11,6 +13,19 @@ import LikeButton from "./likeButton/likeButton";
 
 
 function Cards2(props:Vication): JSX.Element {
+  const [currUser, setCurrUser] = useState("");
+
+    
+  const getUser = () => {
+      const loggedInUser:any = localStorage.getItem("user")
+      setCurrUser(loggedInUser);
+  };
+  
+    useEffect(() => {
+      getUser();
+    }, [store.getState().userState.user]);
+  
+
 
   const property = {
     imageUrl: `http://localhost:3001/vication/images/${props.imageName}`,
@@ -22,15 +37,11 @@ function Cards2(props:Vication): JSX.Element {
     followers: `${props.followers}`,
     rating: 4,
   }
-  console.log(props);
-
-  // get store state if user or admin // 
-   const isUser = true;
 
     return (
         <div className='card-container'>
           <Box  boxShadow='dark-lg' maxW='sm' borderWidth='1px' borderRadius='lg' overflow='hidden'>
-      <Image  src={property.imageUrl} alt={property.imageAlt} />
+      <Image src={property.imageUrl} alt={property.imageAlt} />
       <Box p='6'>
         <Box display='flex' alignItems='baseline'>
           <Badge borderRadius='full' px='2' colorScheme='teal'>
@@ -71,7 +82,7 @@ function Cards2(props:Vication): JSX.Element {
             {property.followers} followers
           </Box>
           <Box>
-          {isUser ? <LikeButton  vication_id={props.id}/>
+          {currUser !== "admin" ? <LikeButton  vication_id={props.id}/>
           : <Box display="grid" gridGap={3} gridAutoFlow="row dense"><button><EditModal id={props.id} imageName={props.imageName} description={props.description} destenation={props.destenation} start_date={props.start_date} end_date={props.end_date} price={props.price} image={props.image} followers={props.followers}/></button>  <button><PopDeleteBtn followers={props.followers} id={props.id}/></button> </Box>
           }
           </Box>

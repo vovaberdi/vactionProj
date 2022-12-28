@@ -19,8 +19,10 @@ function Register(): JSX.Element {
 
         const url = "http://localhost:3001/user/auth/register";
         await axios.post(url, newUser).then((response)=>{
-        console.log(response)
-        localStorage.setItem("token", response.data);
+            const token:any = response.headers.authorization;
+            localStorage.setItem("token", token);
+            localStorage.setItem("user", response.data);
+            store.dispatch(login(response.data));
     })
         .catch(error =>{console.log(error);});
         navigat("/ListPlaces");
