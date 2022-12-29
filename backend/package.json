@@ -1,0 +1,53 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "engines": {
+    "node": "18.12.0"
+  },
+  "description": "",
+  "main": "server.ts",
+  "scripts": {
+    "test": "jest --coverage",
+    "server": "nodemon --exec ts-node server.ts",
+    "start": "server start"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/cors": "^2.8.12",
+    "jest": "^29.0.3",
+    "nodemon": "^2.0.19",
+    "ts-node": "^10.9.1"
+  },
+  "dependencies": {
+    "@types/express": "^4.17.14",
+    "@types/express-fileupload": "^1.4.1",
+    "@types/express-rate-limit": "^6.0.0",
+    "@types/helmet": "^4.0.0",
+    "@types/joi": "^17.2.3",
+    "@types/jsonwebtoken": "^8.5.9",
+    "@types/mysql": "^2.15.21",
+    "@types/node": "^18.7.18",
+    "@types/passport": "^1.0.11",
+    "@types/passport-google-oauth": "^1.0.42",
+    "@types/uuid": "^9.0.0",
+    "@types/winston": "^2.4.4",
+    "cookie-session": "^2.0.0",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "express-fileupload": "^1.4.0",
+    "express-rate-limit": "^6.7.0",
+    "helmet": "^6.0.1",
+    "joi": "^17.6.0",
+    "jsonwebtoken": "^8.5.1",
+    "mysql": "^2.18.1",
+    "passport": "^0.6.0",
+    "passport-google-oauth2": "^0.2.0",
+    "passport-google-oauth20": "^2.0.0",
+    "react-router-dom": "^6.4.3",
+    "uuid": "^9.0.0",
+    "winston": "^3.8.2"
+  }
+}
