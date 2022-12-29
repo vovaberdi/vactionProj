@@ -58,13 +58,13 @@ function Header(): JSX.Element {
             {currUser == 'admin' && (
             <NavLink className="myPages" to="/AddVication">AddVication</NavLink>
             )}
-            <span> | </span>
-            <NavLink onClick={logOut} className="myPages" to="/Login">logOut</NavLink></>
+            {/* <span> | </span> */}
+            <NavLink style={{float:'right'}} onClick={logOut} className="myPages" to="/Login">logOut</NavLink></>
              ) : ( 
-            <NavLink className="myPages" to="/Login">logIn</NavLink>
+            <NavLink style={{float:'right'}} className="myPages" to="/Login">logIn</NavLink>
              )}
-            <span> | </span>
-            <NavLink to="/" className="myPages">{currUser && `Hello ${currUser}`}</NavLink>
+            {/* <span> | </span> */}
+            <span style={{marginLeft:'18rem'}} className="myPages">{currUser && `Hello : ${currUser}`}</span>
             <br/>
             <Divider boxShadow='dark-lg' mt="1rem" orientation='horizontal' />
         </div>

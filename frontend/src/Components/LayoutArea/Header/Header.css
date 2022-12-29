@@ -1,6 +1,12 @@
 .Header {
     margin:1rem;
     font-size:larger;
+
+}
+.myPages{
+  margin-left: 3rem;
+  margin-right: 3rem;
+  font-size: larger;
 }
 .Header > span {
     margin-right: 1rem;

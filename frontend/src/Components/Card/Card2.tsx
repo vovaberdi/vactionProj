@@ -37,11 +37,11 @@ function Cards2(props:Vication): JSX.Element {
     followers: `${props.followers}`,
     rating: 4,
   }
-
+  // minW={320} maxH={210}
     return (
         <div className='card-container'>
-          <Box  boxShadow='dark-lg' maxW='sm' borderWidth='1px' borderRadius='lg' overflow='hidden'>
-      <Image src={property.imageUrl} alt={property.imageAlt} />
+          <Box w={320} h={390}  boxShadow='dark-lg' maxW='sm' borderWidth='1px' borderRadius='lg' overflow='scroll'>
+      <Image h={210} minW={320}  overflow='hidden' src={property.imageUrl} alt={property.imageAlt} />
       <Box p='6'>
         <Box display='flex' alignItems='baseline'>
           <Badge borderRadius='full' px='2' colorScheme='teal'>
