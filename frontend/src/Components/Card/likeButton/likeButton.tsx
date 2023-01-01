@@ -18,9 +18,7 @@ function LikeButton(props: VicationToLike): JSX.Element {
     const getAllLikes = (user:any) =>{
         const token = localStorage.getItem('token');
         const url = `http://localhost:3001/vicationLike/allLikes/${user}`;
-        axios.get(url,{
-            headers: {authorization: `Bearer ${token}`},
-            })
+        axios.get(url)
        .then((response) => {activeLikes(response.data)
         
        }).catch((error) => {console.log("error", error);});
@@ -35,6 +33,7 @@ function LikeButton(props: VicationToLike): JSX.Element {
   const getUser = () => {
       const loggedInUser:any = localStorage.getItem("user")
             setCurrUser(loggedInUser);
+           
             setTimeout(()=>{getAllLikes(loggedInUser);
            },1000) ;
   };
@@ -46,29 +45,27 @@ function LikeButton(props: VicationToLike): JSX.Element {
   
 
     const handleClick = () => {
-        alert(props.vication_id)
        const user_name = currUser;
 
         active !== true ? likeClick(props, user_name) : likeDelete(props)
     setActive(!active);
   };
  
+    const token = localStorage.getItem('token');
 
-    const likeClick = (vacation_id:any , user_name: string) => {
+    const likeClick = (props:VicationToLike , user_name: string) => {
         const follower: VicationToLike = {
             user_name: user_name,
             vication_id: props.vication_id
         }
-            const url = 'http://localhost:3001/vication/addLike';
+            const url = 'http://localhost:3001/vicationLike/addLike';
             axios.post(url,follower)
             .then((response) => {console.log(response.data);
            }).catch((error) => {console.log("error", error);});
     }
 
     const likeDelete = (props:any) => {
-        console.log(props.vication_id)
-            // store.dispatch(login(id));
-            const url = `http://localhost:3001/vication/delLike/${props.vication_id}`;
+            const url = `http://localhost:3001/vicationLike/delLike/${props.vication_id}`;
             axios.delete(url)
             .then((response) => { console.log(response.data)
             }).catch((error) => {console.log("error", error);});

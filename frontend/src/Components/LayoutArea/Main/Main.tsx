@@ -1,4 +1,5 @@
 import { Routes, Route, Navigate } from "react-router-dom";
+import Chart from "../../Chart/Chart";
 import AddVication from "../../Pages/AddVication/AddVication";
 import Home from "../../Pages/Home/Home";
 import ListPlaces from "../../Pages/ListPlaces/ListPlaces";
@@ -16,6 +17,7 @@ function Main(): JSX.Element {
                 <Route path="/" element={<Home />} />
                 <Route path="/Home" element={<Home />} />
                 <Route path="/AddVication" element={<AddVication />} />
+                <Route path="/Chart" element={<Chart />} />
                 <Route path="/ListPlaces" element={<ListPlaces />} />
                 <Route path="/Register" element={<Register />} />
                 <Route path="/Login" element={ user ? <Navigate to="/"/> : <Login />} />

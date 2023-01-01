@@ -56,9 +56,8 @@ function Header(): JSX.Element {
             <NavLink className="myPages" to="/ListPlaces">ListPlaces</NavLink>
             <span> | </span>
             {currUser == 'admin' && (
-            <NavLink className="myPages" to="/AddVication">AddVication</NavLink>
+            <><NavLink className="myPages" to="/AddVication">AddVication</NavLink><span> | </span><NavLink className="myPages" to="/Chart">Chart</NavLink></>
             )}
-            {/* <span> | </span> */}
             <NavLink style={{float:'right'}} onClick={logOut} className="myPages" to="/Login">logOut</NavLink></>
              ) : ( 
             <NavLink style={{float:'right'}} className="myPages" to="/Login">logIn</NavLink>

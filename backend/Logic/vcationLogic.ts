@@ -44,7 +44,6 @@ const addVication = async (vication:Vication): Promise<Vication> => {
 const deleteVication= async (id: number): Promise<void> => {
     const sql = `
     DELETE FROM vication WHERE id=${id}`
-    // safeDelete("./images/" + imageName);
     const response = await dal.execute(sql);
 }
 
@@ -64,8 +63,6 @@ const updatedVication = async (vication: Vication) => {
          start_date = '${vication.start_date}', end_date = '${vication.end_date}', price = 
          '${vication.price}' WHERE id = ${vication.id}`;
 
-         // vication.imageName = vication[index].imageName;
-
          delete vication.image;
     
     await dal.execute(sql);
@@ -83,7 +80,6 @@ const getSingleVication = async (id:number): Promise<Vication[]> => {
 }
 
 const addLike = async (like:VicationToLike): Promise<VicationToLike> => {
-
     const sql = `
     INSERT INTO vication.vication_likes VALUES
     (DEFAULT,
@@ -108,6 +104,12 @@ const getAllLikes = async (user): Promise<VicationToLike[]> => {
     return vicationsLikes;
 }
 
+const addFollower = async (vication_id:VicationToLike): Promise<VicationToLike> => {
+    const sql = 
+    `UPDATE vication.vication SET followers = + 1 WHERE id = ${vication_id}`;
+    await dal.execute(sql);
+    return vication_id;
+}
 
 
 export default{
@@ -118,5 +120,6 @@ deleteVication,
 updatedVication,
 addLike,
 deleteLike,
-getAllLikes
+getAllLikes,
+addFollower
 }

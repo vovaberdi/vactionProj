@@ -22,7 +22,6 @@ function AddVication(): JSX.Element {
     console.log(token);
     const send = async (newVication:Vication) =>{
         newVication.image = file;
-        console.log(newVication.image);
         const url = "http://localhost:3001/vication/add";
         newVication.followers=0;
         await axios.post(url, newVication ,{
@@ -31,7 +30,9 @@ function AddVication(): JSX.Element {
             }
         })
         .then((response)=>{console.log(response)
-        navigat("/ListPlaces")
+            setTimeout(()=>{navigat("/ListPlaces");
+            },1000) ;
+        
         })
         .catch(error =>{console.log(error);});
     }

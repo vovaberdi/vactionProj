@@ -21,7 +21,7 @@ const server = express();
 // server.use(passport.initialize());
 // server.use(passport.session());
 
-// const currentPort = config.port;
+const currentPort = config.port;
 dal_mysql.execute(createVication);
 dal_mysql.execute(createUser);
 dal_mysql.execute(createVicationFollowers);
@@ -63,7 +63,7 @@ server.use("/vication",routerVication);
 server.use("/vicationLike",routerLikes);
 server.use("*", ErrorHandler);
 
-server.listen(process.env.PORT || 3001, function(){
-    console.log("Express server listening on port %d in %s mode", this.address().port. server.settings.env);
-})
-// server.listen(currentPort, () => {console.log(`listening on http://localhost:${currentPort}`)} )
+// server.listen(process.env.PORT || 3001, function(){
+//     console.log("Express server listening on port %d in %s mode", this.address().port. server.settings.env);
+// })
+server.listen(currentPort, () => {console.log(`listening on http://localhost:${currentPort}`)} )

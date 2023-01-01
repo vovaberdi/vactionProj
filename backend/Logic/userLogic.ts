@@ -15,6 +15,11 @@ const addUser = async (user:User): Promise<string> => {
     // const errors = user.validatePost();
     // if (errors) throw new ClientError(400, errors);
 
+    const isTaken = await isUsernameTaken(user.user_name);
+    if (isTaken) {
+        throw new ClientError(400, `Username ${user.user_name} already taken`);
+    }
+
     user.password = crypto_helper.hash(user.password);
     user.id_ = uuid();
 
@@ -64,7 +69,7 @@ const loginAsync = async (credentials:userCredentials): Promise<string> => {
     credentials.password = crypto_helper.hash(credentials.password);
 
     const sql = `
-    SELECT * FROM vication.user WHERE user.password='${credentials.password}'
+    SELECT * FROM vication.user WHERE user.password='${credentials.password}' AND user_name='${credentials.user_name}'
     `;
     const user = await dal.execute(sql)
     if(!user) throw new ClientError(401, "Incorrect username or password.");
@@ -86,6 +91,14 @@ const getSingleUser = async (id_:string): Promise<User> => {
     if(!user) throw new ClientError(401, "Incorrect username");
     delete user.password;
     return user;
+}
+
+async function isUsernameTaken(username: string): Promise<boolean> {
+    const sql = `SELECT COUNT(*) AS count FROM user WHERE user_name = '${username}'`;
+    const table = await dal.execute(sql);
+    const row = table[0];
+    const count = row.count;
+    return count > 0;
 }
 
 export default{

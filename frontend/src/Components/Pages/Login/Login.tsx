@@ -1,4 +1,4 @@
-import {Box,Button,Checkbox,Container,Divider,FormControl,FormLabel,Heading,HStack,Input,Stack,Text,useBreakpointValue,useColorModeValue,} from '@chakra-ui/react'
+import {Box,Button,Checkbox,Container,Divider,FormControl,FormLabel,Heading,HStack,Input,Stack,Text,useBreakpointValue,useColorModeValue, useToast,} from '@chakra-ui/react'
   import { Logo } from './Logo'
   import { OAuthButtonGroup } from './OAuthButtonGroup'
   import { PasswordField } from './PasswordField'
@@ -10,16 +10,18 @@ import { useNavigate } from "react-router-dom";
 import { store } from '../../../store/store';
 import { login } from '../../../store/user-state';
 import userCredentials from '../../../models/credentialsModel';
-import Register from '../../Register/Register';
 
 function Login(): JSX.Element {
 
     const {register, handleSubmit} = useForm<User>();
     const navigat = useNavigate();
+    const toast = useToast()
 
 
+    const toasti = () => {
+      toast({title: 'no permission',status: 'error',isClosable: true,})
+    }
     const send = async (credentials:userCredentials) =>{
-        // localStorage.setItem("user_name", credentials.user_name);
 
         const url = "http://localhost:3001/user/auth/login";
         await axios.post(url, credentials).then((response)=>{ 
@@ -29,8 +31,10 @@ function Login(): JSX.Element {
           store.dispatch(login(response.data));
           navigat("/ListPlaces")
         })
-        .catch(error =>{console.log(error);});
-        navigat("/");
+        .catch(error =>{console.log(error);
+        toasti();
+        navigat("/Login");
+        })
     }
 
     

@@ -11,7 +11,7 @@ const PER_PAGE = 8;
 function ListPlaces(): JSX.Element {
 
     const [vication, setVication] = useState<Vication[]>([]);
-    const [currentPage, setCurrentPage] = useState(0);
+    const [currentPage, setCurrentPage] = useState(0); 
     
 
     const token = localStorage.getItem('token');

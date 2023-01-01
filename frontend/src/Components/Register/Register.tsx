@@ -1,4 +1,4 @@
-import { Button, Container, FormControl, FormLabel, Input, Select } from "@chakra-ui/react";
+import { Button, Container, FormControl, FormLabel, Input, Select, useToast } from "@chakra-ui/react";
 import axios from "axios";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
@@ -11,6 +11,12 @@ function Register(): JSX.Element {
 
     const {register, handleSubmit} = useForm<User>();
     const navigat = useNavigate();
+    const toast = useToast()
+
+
+    const toasti = () => {
+      toast({title: 'user name taken',status: 'error',isClosable: true,})
+    }
 
    
     const send = async (newUser:User) =>{
@@ -23,9 +29,11 @@ function Register(): JSX.Element {
             localStorage.setItem("token", token);
             localStorage.setItem("user", response.data);
             store.dispatch(login(response.data));
+            navigat("/ListPlaces");
     })
-        .catch(error =>{console.log(error);});
-        navigat("/ListPlaces");
+        .catch(error =>{console.log(error)
+            toasti()
+        });
     }
 
     return (

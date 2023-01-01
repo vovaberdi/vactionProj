@@ -29,7 +29,7 @@ function Cards2(props:Vication): JSX.Element {
 
   const property = {
     imageUrl: `http://localhost:3001/vication/images/${props.imageName}`,
-    imageAlt: 'Rear view of modern home with pool',
+    imageAlt: `${props.description}`,
     from: `${props.start_date}`.toString().split('T')[0],
     to: `${props.end_date}`.toString().split('T')[0],
     description: `${props.description}`,
@@ -37,10 +37,9 @@ function Cards2(props:Vication): JSX.Element {
     followers: `${props.followers}`,
     rating: 4,
   }
-  // minW={320} maxH={210}
     return (
         <div className='card-container'>
-          <Box w={320} h={390}  boxShadow='dark-lg' maxW='sm' borderWidth='1px' borderRadius='lg' overflow='scroll'>
+          <Box  boxShadow='dark-lg' maxW='sm' borderWidth='1px' borderRadius='lg' overflow='scroll'>
       <Image h={210} minW={320}  overflow='hidden' src={property.imageUrl} alt={property.imageAlt} />
       <Box p='6'>
         <Box display='flex' alignItems='baseline'>
@@ -83,15 +82,12 @@ function Cards2(props:Vication): JSX.Element {
           </Box>
           <Box>
           {currUser !== "admin" ? <LikeButton  vication_id={props.id}/>
-          : <Box display="grid" gridGap={3} gridAutoFlow="row dense"><button><EditModal id={props.id} imageName={props.imageName} description={props.description} destenation={props.destenation} start_date={props.start_date} end_date={props.end_date} price={props.price} image={props.image} followers={props.followers}/></button>  <button><PopDeleteBtn followers={props.followers} id={props.id}/></button> </Box>
+          : <Box display="grid" gridGap={3} gridAutoFlow="row dense"><button><EditModal id={props.id} imageName={props.imageName} description={props.description} destenation={props.destenation} start_date={props.start_date} end_date={props.end_date} price={props.price} image={props.image} followers={props.followers}/></button>  <button><PopDeleteBtn imageName={props.imageName} followers={props.followers} id={props.id}/></button> </Box>
           }
           </Box>
           
         </Box>
         
-
-
-
       </Box>
     </Box>
    

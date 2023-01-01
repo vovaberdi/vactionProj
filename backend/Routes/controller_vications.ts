@@ -5,6 +5,7 @@ import verifyToken from '../MiddleWare/verify_token';
 import Vication from '../Models/vication';
 import verifyAdmin from '../MiddleWare/verify_admin';
 import VicationToLike from '../Models/VicationToLike';
+import safeDelete from '../helpers/safe-delete';
 
 
 
@@ -55,9 +56,13 @@ routerVication.put("/:id", [verifyToken, verifyAdmin], async (request: Request, 
   catch (err) {next(err)}
 })
 
-routerVication.delete("/:id", [verifyToken, verifyAdmin], async (request: Request, response: Response, next: NextFunction) => {
+routerVication.post("/:id", [verifyToken, verifyAdmin], async (request: Request, response: Response, next: NextFunction) => {
   try{
   const id = +request.params.id;
+  const imageName = request.body.imageName;
+  // const user_name = request.body.user_name;
+  safeDelete("./images/" + imageName);
+  await vicationLogic.deleteLike(id);
   await vicationLogic.deleteVication(id);
   response.sendStatus(204)
   }

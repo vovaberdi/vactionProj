@@ -1,6 +1,7 @@
-import { Button, Container, FormControl, FormLabel, Input, Modal, ModalBody, ModalCloseButton, ModalContent, ModalFooter, ModalHeader, ModalOverlay, useDisclosure } from "@chakra-ui/react";
+import { Toast, Button, Container, FormControl, FormLabel, Input, Modal, ModalBody, ModalCloseButton, ModalContent, ModalFooter, ModalHeader, ModalOverlay, useDisclosure } from "@chakra-ui/react";
 import { Icon } from '@iconify/react';
 import axios from "axios";
+import { error } from "console";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
@@ -23,11 +24,9 @@ function EditModal(props:Vication): JSX.Element {
 
     
     const token = localStorage.getItem('token');
-    console.log(token);
     const send = async (upDateVication:Vication) =>{
       
         upDateVication.image = file;
-        console.log(upDateVication.image);
         const url = `http://localhost:3001/vication/${props.id}`;
 
         upDateVication.followers=props.followers;
@@ -41,7 +40,11 @@ function EditModal(props:Vication): JSX.Element {
         .then((response)=>{
           onClose()
         })
-        .catch(error =>{console.log(error);});
+        .catch(error =>{toasti(error);});
+    }
+
+    const toasti = (error:any) => {
+      Toast({title: `${error}`,status: 'error',isClosable: true,})
     }
 
     const handleFile = (e: any) => {
