@@ -44,19 +44,19 @@ function ListPlaces(): JSX.Element {
       
     return (
         <div className="ListPlaces">
-            <Box alignItems="center" justifyContent="space-between">
+            {/* <Box alignItems="center" justifyContent="space-between"> */}
              <ReactPaginate 
-                previousLabel={"⬅️Previous"}
-                nextLabel={"Next➡️"}
+                previousLabel={"Previous"}
+                nextLabel={"Next"}
                 pageCount={pageCount}
                 onPageChange={handlePageClick}
-                containerClassName={"Pagination"}
-                previousLinkClassName={"pagination_link"}
-                nextLinkClassName={"pagination__link"}
-                disabledClassName={"pagination__link--disabled"}
+                containerClassName={"pagination"}
+                // previousLinkClassName={"pagination_link"}
+                // nextLinkClassName={"pagination__link"}
+                // disabledClassName={"pagination__link--disabled"}
                 activeClassName={"pagination__link--active"}
                 />
-                </Box>
+                {/* </Box> */}
             <Box  display="flex"  alignItems="center" justifyContent="space-between">
                 
             <SimpleGrid  columns={{ sm: 2, md: 4 }} spacing='8' p='10' textAlign='center' rounded='lg' color='gray.400'>

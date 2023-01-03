@@ -20,11 +20,12 @@ function Home(): JSX.Element {
     return (
         <div className="Home">
           <Text bgGradient='linear(to-l, #7928CA, #FF0080)' bgClip='text' fontSize='6xl' fontWeight='extrabold'>
-            --Dev_Meeting--<br />
+            --Vacation-App--<br />
             Name: Vladimir Berdibekov<br />
             Id: 311937239<br />
             Course: Full Stack Web class84<br />
-            Todays Date: 6/12/2022
+            admin 654321
+            user 1234
           </Text>
           <Container h="100vh" display="flex" alignItems="center" justifyContent="center">
       <Box

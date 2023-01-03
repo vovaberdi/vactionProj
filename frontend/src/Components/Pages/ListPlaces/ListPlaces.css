@@ -3,25 +3,27 @@
 }
 .pagination a {
     padding: 10px;
-    border: 1px solid #47a7de;
-    color:#47a7de;
+     border: 1px solid #47a7de; 
+     border-radius: 20%;
+     color:#47a7de; 
     justify-content:center;
 
 }
 .pagination{
     justify-content:center;
     display: flex;
-    justify-content: flex-start;
-    list-style: row;
-    cursor: pointer;
+    /* justify-content: flex-start; */
+    list-style:none;
+    /* cursor: pointer; */
 }
-/* .pagination__link--active a {
-    color: #47a7de;
+.pagination__link--active a {
+    color: #d7dde1;
     background: #47a7de;
 }  
 .pagination__link--disabled a{
-    color: rgb(198,197,202);
-    border: 1px solid rgb(198,197,202);
+    /* color: rgb(198,197,202); */
+    /* border: 1px solid rgb(198,197,202); */
 }
 .pagination__link{
-    font-weight: bold; } */
+    /* font-weight: bold; */
+ }
