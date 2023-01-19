@@ -12,7 +12,7 @@ import { store } from "../../store/store";
 
 
 
-function Cards2(props:Vication): JSX.Element {
+function Cards2(props:{props:Vication}): JSX.Element {
   const [currUser, setCurrUser] = useState("");
 
     
@@ -28,13 +28,13 @@ function Cards2(props:Vication): JSX.Element {
 
 
   const property = {
-    imageUrl: `http://localhost:3001/vication/images/${props.imageName}`,
-    imageAlt: `${props.description}`,
-    from: `${props.start_date}`.toString().split('T')[0],
-    to: `${props.end_date}`.toString().split('T')[0],
-    description: `${props.description}`,
-    formattedPrice: `$ ${props.price}`,
-    followers: `${props.followers}`,
+    imageUrl: `http://localhost:3001/vication/images/${props.props.imageName}`,
+    imageAlt: `${props.props.description}`,
+    from: `${props.props.start_date}`.toString().split('T')[0],
+    to: `${props.props.end_date}`.toString().split('T')[0],
+    description: `${props.props.description}`,
+    formattedPrice: `$ ${props.props.price}`,
+    followers: `${props.props.followers}`,
     rating: 4,
   }
     return (
@@ -44,7 +44,7 @@ function Cards2(props:Vication): JSX.Element {
       <Box p='6'>
         <Box display='flex' alignItems='baseline'>
           <Badge borderRadius='full' px='2' colorScheme='teal'>
-            {props.destenation}
+            {props.props.destenation}
           </Badge>
           <Box
             color='gray.500'
@@ -81,8 +81,8 @@ function Cards2(props:Vication): JSX.Element {
             {property.followers} followers
           </Box>
           <Box>
-          {currUser !== "admin" ? <LikeButton  vication_id={props.id}/>
-          : <Box display="grid" gridGap={3} gridAutoFlow="row dense"><button><EditModal id={props.id} imageName={props.imageName} description={props.description} destenation={props.destenation} start_date={props.start_date} end_date={props.end_date} price={props.price} image={props.image} followers={props.followers}/></button>  <button><PopDeleteBtn imageName={props.imageName} followers={props.followers} id={props.id}/></button> </Box>
+          {currUser !== "admin" ? <LikeButton  vication_id={props.props.id}/>
+          : <Box display="grid" gridGap={3} gridAutoFlow="row dense"><button><EditModal props={props.props}/></button>  <button><PopDeleteBtn props={props.props}/></button> </Box>
           }
           </Box>
           

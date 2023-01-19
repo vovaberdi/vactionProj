@@ -36,7 +36,7 @@ function ListPlaces(): JSX.Element {
 
    const currentPageData = vication
    .slice(offset, offset + PER_PAGE)
-   .map(item=> <Cards2 key={item.id} id={item.id} price={item.price} end_date={item.end_date} start_date={item.start_date} imageName={item.imageName} description={item.description} destenation={item.destenation} followers={item.followers}/>)
+   .map(item=> <Cards2 key={item.id} props={item}/>)
 
    const pageCount = Math.ceil(vication.length / PER_PAGE);
    

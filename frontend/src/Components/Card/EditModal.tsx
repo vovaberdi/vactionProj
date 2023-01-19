@@ -10,7 +10,7 @@ import Vication from "../../models/vicationModel";
 
 
 
-function EditModal(props:Vication): JSX.Element {
+function EditModal(props:{props: Vication}): JSX.Element {
     const { isOpen, onOpen, onClose } = useDisclosure()
 
 
@@ -27,10 +27,10 @@ function EditModal(props:Vication): JSX.Element {
     const send = async (upDateVication:Vication) =>{
       
         upDateVication.image = file;
-        const url = `http://localhost:3001/vication/${props.id}`;
+        const url = `http://localhost:3001/vication/${props.props.id}`;
 
-        upDateVication.followers=props.followers;
-        upDateVication.imageName=props.imageName;
+        upDateVication.followers=props.props.followers;
+        upDateVication.imageName=props.props.imageName;
 
         await axios.put(url, upDateVication ,{
             headers: { authorization: `Bearer ${token}`,
@@ -70,20 +70,20 @@ function EditModal(props:Vication): JSX.Element {
             <FormControl >
 
             <FormLabel>description</FormLabel>
-            <Input {...register("description")} defaultValue={props.description} placeholder='first_name' />
+            <Input {...register("description")} defaultValue={props.props.description} placeholder='first_name' />
 
             <FormLabel>destenation</FormLabel>
-            <Input {...register("destenation")} defaultValue={props.destenation} placeholder='last_name' />
+            <Input {...register("destenation")} defaultValue={props.props.destenation} placeholder='last_name' />
 
             <FormLabel>image</FormLabel>
             <Input type="file"  onChange={handleFile} placeholder='image' />
 
-            <Input mt={4} {...register("start_date")} defaultValue={props.start_date?.toString()} placeholder="start_date"size="md" type="datetime-local"/>
+            <Input mt={4} {...register("start_date")} defaultValue={props.props.start_date?.toString()} placeholder="start_date"size="md" type="datetime-local"/>
 
-            <Input mt={4} {...register("end_date")} defaultValue={props.end_date?.toString()} placeholder="end_date"size="md" type="datetime-local"/>
+            <Input mt={4} {...register("end_date")} defaultValue={props.props.end_date?.toString()} placeholder="end_date"size="md" type="datetime-local"/>
 
             <FormLabel>price</FormLabel>
-            <Input {...register("price")} defaultValue={props.price} placeholder='price' />
+            <Input {...register("price")} defaultValue={props.props.price} placeholder='price' />
 
             </FormControl>
             <Button mt={4} onClick={()=>send} mb={4} colorScheme='teal' type='submit'> Submit</Button>

@@ -11,7 +11,7 @@ import { useState } from "react";
 
 
 
-function PopDeleteBtn(props: Vication): JSX.Element {
+function PopDeleteBtn(props:{props: Vication}): JSX.Element {
 
   const [active, setActive] = useState(true);
 
@@ -61,7 +61,7 @@ function PopDeleteBtn(props: Vication): JSX.Element {
           <PopoverFooter display='flex' justifyContent='flex-end'>
             <ButtonGroup size='sm'>
               <Button bg='purple.500' onClick={onClose} variant='outline'>Cancel</Button>
-              <Button bg='purple.500' onClick={()=>{deleteId(props)}} >Apply</Button>
+              <Button bg='purple.500' onClick={()=>{deleteId(props.props)}} >Apply</Button>
             </ButtonGroup>
           </PopoverFooter>
         </PopoverContent>

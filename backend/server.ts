@@ -17,11 +17,10 @@ const expressRateLimit = require("express-rate-limit");
 
 
 const server = express();
-
 // server.use(passport.initialize());
 // server.use(passport.session());
 
-const currentPort = config.port;
+const currentPort = 3001;
 dal_mysql.execute(createVication);
 dal_mysql.execute(createUser);
 dal_mysql.execute(createVicationFollowers);

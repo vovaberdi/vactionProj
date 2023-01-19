@@ -20,6 +20,7 @@ const execute = (sql: string): Promise<any> => {
         connection.query(sql, (err, result) => {
             //if we got an error, exit with reject and return
             if (err) {
+                console.log(err);
                 reject(err);
                 return;
             }
