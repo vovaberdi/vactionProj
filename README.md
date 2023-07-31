@@ -23,4 +23,5 @@ Fluid User Experience:
 Our Full Stack app is optimized for smooth performance, ensuring that each feature runs flawlessly. The fast and reliable user experience is designed to keep users engaged and captivated throughout their journey.
 Our aim is to create a user-friendly, technologically advanced platform that opens doors to new adventures and unforgettable experiences. We invite you to join us on this journey and let technology be your guide to a world of excitement and pleasure. Happy exploring!
 
-file:///Users/vladimirberdibekov/Desktop/Screen%20Shot%202023-07-30%20at%2011.17.36.png
+
+![](https://github.com/vovaberdi/vactionProj/blob/main/Screen%20Shot%202023-07-30%20at%2011.17.36.png)
