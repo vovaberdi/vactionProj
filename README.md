@@ -25,3 +25,5 @@ Our aim is to create a user-friendly, technologically advanced platform that ope
 
 
 ![](https://github.com/vovaberdi/vactionProj/blob/main/Screen%20Shot%202023-07-30%20at%2011.17.36.png)
+
+![](https://github.com/vovaberdi/vactionProj/blob/main/Screen%20Shot%202023-07-30%20at%2011.20.34.png)
